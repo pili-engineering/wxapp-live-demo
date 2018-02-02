@@ -1,5 +1,5 @@
 <view class="play-page">
-  <view class="player-view">
+  <view class="player-view{{playerActive ? ' active' : ''}}">
     <live-player
       id="player"
       src="{{playURL}}"
@@ -7,6 +7,26 @@
       bindstatechange="statechange"
       binderror="error"
     >
+      <cover-view class="wrapper" bindtap="onPlayerTap">
+        <cover-view class="state" wx:if="{{!startPlay}}">加载中...</cover-view>
+        <cover-view class="player-control">
+          <cover-view class="fs-wrapper" catchtap="onPageExit">
+            <cover-image class="fullscreen" src="../../assets/icons/exit.png"/>
+          </cover-view>
+          <!--
+          <cover-image catchtap="onFullScreen" class="fullscreen-o" src="../../assets/icons/fullscreen.png"/>
+          -->
+        </cover-view>
+        
+        <!--
+        <cover-view class="player-fullscreen">
+          <cover-view class="fullscreen__title">{{title}}</cover-view>
+        </cover-view>
+        -->
+      </cover-view>
     </live-player>
+  </view>
+
+  <view class="userinfo">
   </view>
 </view>

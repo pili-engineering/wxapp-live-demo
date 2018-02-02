@@ -10,18 +10,31 @@ const host = app.globalData.host;
 Page({
   data: {
     playURL: null,
+    startPlay: false,
+    playerActive: false,
+    title: '',
   },
-
-  // TODO: get user id
   onLoginFinish() {
-    this.getPlayURL();
+    const user = app.globalData.activeUserMap[this.userId];
+    if (!user) {
+      wx.showToast({ title: '该主播已经下播', icon: 'none' });
+      wx.navigateBack();
+    }
+    if (!this.playContext) {
+      this.playContext = wx.createLivePlayerContext('player', this);
+    }
+    this.getPlayURL(this.userId);
   },
 
-  onLoad() {
-    this.playContext = wx.createLivePlayerContext('player', this);
+  onLoad(option) {
+    this.userId = option.user;
+    wx.showShareMenu({
+      withShareTicket: true
+    });
   },
 
   onShow() {
+    this.setData({ startPlay: false });
     if (app.loginFinish) {
       this.onLoginFinish();
     } else {
@@ -44,7 +57,44 @@ Page({
     }
   },
 
-  // TODO: get rtmp playurl
+  onPlayerTap() {
+    if (!this.data.playerActive) {
+      if (this.activeTimeout) {
+        clearTimeout(this.activeTimeout);
+      }
+      this.activeTimeout = setTimeout(() => {
+        this.setData({ playerActive: false });
+        this.activeTimeout = null;
+      }, 2000);
+    }
+    this.setData({ playerActive: !this.data.playerActive });
+  },
+
+  onPageExit() {
+    wx.navigateBack();
+  },
+
   getPlayURL: function(user) {
+    const self = this;
+    wx.request({
+      url: `${host}/pili/rtmp/play/${user}`,
+      dataType: 'json',
+      success: function(data) {
+        self.setData({ playURL: data.data.url }, () => {
+          self.playContext.play({
+            success: function() {
+              console.log('play success');
+            },
+            fail: function() {
+              console.log('play fail');
+            },
+            complete: function() {
+              console.log('complete');
+            }
+          });
+          self.playContext.requestFullScreen({ direction: 0 });
+        });
+      },
+    });
   }
 });

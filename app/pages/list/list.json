@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "live-card": "./live-card/live-card"
+  },
+  "enablePullDownRefresh": true
+}
