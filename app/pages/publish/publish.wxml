@@ -1,0 +1,9 @@
+<view class="publish-page">
+  <live-pusher
+    id="pusher" url="{{pushURL}}" mode="{{pushMode}}"
+    bindstatechange="statechange"
+    beauty="6"
+    whiteness="6"
+  >
+  </live-pusher>
+</view>

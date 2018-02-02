@@ -1,0 +1,12 @@
+<view class="play-page">
+  <view class="player-view">
+    <live-player
+      id="player"
+      src="{{playURL}}"
+      mode="live"
+      bindstatechange="statechange"
+      binderror="error"
+    >
+    </live-player>
+  </view>
+</view>

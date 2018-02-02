@@ -1,0 +1,10 @@
+.play-page {
+  width: 100%;
+}
+
+#player {
+  width: 750rpx;
+  height: 100vh;
+  position: relative;
+}
+
