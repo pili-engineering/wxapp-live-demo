@@ -6,4 +6,8 @@
  */
 const app = require('./app');
 
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1:27017/piliwechat').catch(console.log);
+
 app.listen(8686, () => { console.log('listening on 8686') });

@@ -10,6 +10,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
+app.use('/wechat', require('./routers/wechat'));
+app.use('/pili', require('./routers/pili'));
 
 const server = http.createServer(app);
 
