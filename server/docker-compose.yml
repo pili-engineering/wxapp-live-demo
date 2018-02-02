@@ -1,0 +1,11 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - ./volumes/mongo/db:/data/db
+
+  webserver:
+    build: .
+    ports:
+      - "8686:8686"
