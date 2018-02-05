@@ -1,15 +1,15 @@
 # 小程序端配置流程
 
 ## 在微信公众平台注册小程序获取APPID
-[](http://7xn38i.com1.z0.glb.clouddn.com/wapp/wapp/1517801817016.jpg)
+![](http://7xn38i.com1.z0.glb.clouddn.com/wapp/wapp/1517801817016.jpg)
 
 ## 配置小程序
 打开微信开发者工具，选择该目录为小程序目录打开编辑页面   
 编辑 `app.js` 将第一行的host参数改为自己前面配置的后端地址，注意需要https   
 小程序的全局配置如下  
-[](http://7xn38i.com1.z0.glb.clouddn.com/wapp/1517802876727.jpg)
+![](http://7xn38i.com1.z0.glb.clouddn.com/wapp/1517802876727.jpg)
 
 配置完成后就可以直接编译运行了，注意live-player 和 live-pusher
 组件都无法在开发者工具上预览，所以请自行用手机扫码使用开发版来测试
 
-* 上线之前请先在微信公众平台配置安全域名，然后关闭开发者工具的不检查安全域名设定 *
+*上线之前请先在微信公众平台配置安全域名，然后关闭开发者工具的不检查安全域名设定*
