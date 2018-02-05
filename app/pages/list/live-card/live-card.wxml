@@ -12,7 +12,7 @@
       <image src="{{avatarImage}}" class="avatar__img" mode="aspectFill"/>
     </view>
     <view class="content">
-      <text class="content__title">{{liveTitle}}</text>
+      <text class="content__title">{{userName}}的直播间</text>
     </view>
     <view class="blank" />
     <view class="share" wx:if="{{active}}" catchtap="empty">
