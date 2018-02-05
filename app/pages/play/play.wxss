@@ -13,7 +13,7 @@
   position: relative;
 }
 
-.player-view.active .player-control, .player-view.active .player-fullscreen {
+.player-view.active .player-control {
   opacity: 1;
 }
 
@@ -50,46 +50,13 @@
   background-color: rgba(0, 0, 0, .6);
 }
 
-.fullscreen,  .fullscreen-o {
+.exit {
   height: 30rpx;
   position: absolute;
   width: 30rpx;
   overflow: hidden;
   top: 15rpx;
   left: 15rpx;
-}
-
-.fullscreen-o {
-  right: 100rpx;
-  height: 50rpx;
-  width: 50rpx;
-  top: 10rpx;
-}
-
-.player-fullscreen {
-  height: 100rpx;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, .6);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 30rpx 0 30rpx;
-  transition: opacity ease 0.5s;
-  opacity: 0;
-}
-
-.fullscreen__title {
-  font-size: 16px;
-  color: #fff;
-}
-
-.fullscreen__close {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 60rpx;
 }
 
 .wrapper {

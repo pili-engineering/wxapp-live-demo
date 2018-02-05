@@ -26,60 +26,6 @@
   transform: translateY(0);
 }
 
-.publish__mainbtn {
-  width: 150rpx;
-  height: 150rpx;
-  border-radius: 75rpx;
-  background-color: #fff;
-  transition: all ease 0.3s;
-  position: absolute;
-  top: 30rpx;
-  left: calc(50% - 75rpx);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.publish__mainbtn.disable {
-  background-color: rgba(100, 100, 100, 1);
-}
-.publish__mainbtn.disable .mainbtn__center {
-  background-color: #550000;
-}
-
-.stop .mainbtn__center {
-  width: 30rpx;
-  height: 30rpx;
-  border-radius: 15rpx;
-}
-
-.mainbtn__center {
-  width: 152rpx;
-  height: 152rpx;
-  border-radius: 76rpx;
-  background-color: #ff0000;
-  transition: all ease 0.2s;
-  position: relative;
-}
-
-.mainbtn__icon {
-  position: absolute;
-  height: 80rpx;
-  width: 80rpx;
-  left: 35rpx;
-  top: 35rpx;
-  transition: opacity ease 0.4s;
-  opacity: 0;
-}
-
-.pushing .icon__pause {
-  opacity: 1;
-}
-
-.pause .icon__resume {
-  opacity: 1;
-}
-
 .switchbtn {
   width: 80rpx;
   height: 80rpx;
@@ -102,9 +48,6 @@
   right: 335rpx;
   top: 100rpx;
   position: absolute;
-}
-
-.magicbtn.active {
 }
 
 .control__mode {

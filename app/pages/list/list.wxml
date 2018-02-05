@@ -1,22 +1,4 @@
 <view class="container">
-  <!--
-  <view class="startpublish {{showPublish ? 'active' : ''}}">
-    <image src="../../assets/icons/exit.png" class="exit" bindtap="exitPublish" />
-    <view class="title">
-      <input
-        value="{{liveTitle}}"
-        class="title__input"
-        placeholder-class="placeholder"
-        placeholder="给直播间起个标题吧"
-        bindinput="onTitleInput"
-      />
-      <view class="title__line" />
-    </view>
-    <view class="startbtn" bindtap="onToPublish">
-      <text class="startbtn__text">开始直播</text>
-    </view>
-  </view>
-  -->
   <view class="active-list" scroll-y bindscrolltoupper="onScrollTop">
     <view wx:if="{{ activeUser.length === 0 && fetched }}" class="noactive" >
       <image class="noactive_tv" src="../../assets/icons/tv.png" mode="aspectFit"/>
