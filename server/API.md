@@ -79,7 +79,7 @@ Response 200
 
 ### 获取RTMP的推流或者播放地址
 ```
-GET /rtmp/<type>/<userId>
+GET /pili/rtmp/<type>/<userId>
 
 Response 200
 { url: <地址> }
