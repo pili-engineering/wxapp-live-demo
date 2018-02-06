@@ -7,6 +7,10 @@
 const PLService = require('./PLService');
 const PILI = new PLService();
 
+/**
+ * 这里替换成七牛的 AK，SK
+ */
+
 PILI.setAuthorization(
   '<Your Qiniu AK>',
   '<Your Qiniu SK>',
