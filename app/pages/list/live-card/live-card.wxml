@@ -1,0 +1,23 @@
+<view class="live-card" bindtap="onTap">
+  <view class="cover">
+    <image src="{{coverImage}}" class="cover__img" mode="aspectFill"/>
+    <view class="status">
+      <view class="status__icon {{active ? 'active' : ''}}"></view>
+      <text class="status__text">{{active ? "直播中" : "休息中"}}</text>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class="avatar">
+      <image src="{{avatarImage}}" class="avatar__img" mode="aspectFill"/>
+    </view>
+    <view class="content">
+      <text class="content__title">{{userName}}的直播间</text>
+    </view>
+    <view class="blank" />
+    <view class="share" wx:if="{{active}}" catchtap="empty">
+      <button id="sharebtn{{index}}" plain="true" class="sharebtn" open-type="share" data-index="{{index}}"/>
+      <image class="shareimg" src="../../../assets/icons/share.png"/>
+    </view>
+  </view>
+</view>

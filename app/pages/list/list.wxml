@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="active-list" scroll-y bindscrolltoupper="onScrollTop">
+    <view wx:if="{{ activeUser.length === 0 && fetched }}" class="noactive" >
+      <image class="noactive_tv" src="../../assets/icons/tv.png" mode="aspectFit"/>
+      目前没有人直播
+    </view>
+    <live-card
+      wx:key="{{item.userId}}"
+      wx:for="{{activeUser}}"
+      active
+      coverImage="{{item.avatarUrl}}"
+      avatarImage="{{item.avatarUrl}}"
+      liveTitle="{{item.liveTitle}}"
+      userName="{{item.nickName}}"
+      bindenter="toPlay"
+      index="{{index}}"
+    />
+    <view class="blank" />
+  </view>
+  <view class="livebtn" bindtap="onToPublish">
+    <view class="livebtn-content">
+      <text class="livebtn__text">开始直播</text>
+      <image src="../../assets/icons/start.png" class="livebtn__icon" />
+    </view>
+  </view>
+</view>

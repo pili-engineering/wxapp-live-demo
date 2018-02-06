@@ -1,0 +1,68 @@
+.play-page {
+  width: 100%;
+}
+
+.player-view {
+  width: 100%;
+  position: relative;
+}
+
+#player {
+  width: 750rpx;
+  height: 100vh;
+  position: relative;
+}
+
+.player-view.active .player-control {
+  opacity: 1;
+}
+
+.player-control {
+  position: absolute;
+  bottom: 30rpx;
+  height: 70rpx;
+  width: 100%;
+  transition: opacity ease 0.5s;
+  opacity: 0;
+  overflow: visible;
+}
+
+.state {
+  width: 200rpx;
+  height: 100rpx;
+  border-radius: 30rpx;
+  background: rgba(0, 0, 0, .5);
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  position: absolute;
+  top: 40%;
+  left: calc(50% - 100rpx);
+}
+
+.fs-wrapper {
+  height: 60rpx;
+  width: 60rpx;
+  position: absolute;
+  right: 40rpx;
+  border-radius: 30rpx;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.exit {
+  height: 30rpx;
+  position: absolute;
+  width: 30rpx;
+  overflow: hidden;
+  top: 15rpx;
+  left: 15rpx;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

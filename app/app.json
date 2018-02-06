@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/list/list",
+    "pages/publish/publish",
+    "pages/play/play"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "七牛直播Demo",
+    "navigationBarTextStyle":"black"
+  }
+}

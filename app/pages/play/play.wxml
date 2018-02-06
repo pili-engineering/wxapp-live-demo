@@ -1,0 +1,23 @@
+<view class="play-page">
+  <view class="player-view{{playerActive ? ' active' : ''}}">
+    <live-player
+      id="player"
+      src="{{playURL}}"
+      mode="live"
+      bindstatechange="statechange"
+      binderror="error"
+    >
+      <cover-view class="wrapper" bindtap="onPlayerTap">
+        <cover-view class="state" wx:if="{{!startPlay}}">加载中...</cover-view>
+        <cover-view class="player-control">
+          <cover-view class="fs-wrapper" catchtap="onPageExit">
+            <cover-image class="exit" src="../../assets/icons/exit.png"/>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+    </live-player>
+  </view>
+
+  <view class="userinfo">
+  </view>
+</view>

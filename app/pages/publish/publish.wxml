@@ -1,0 +1,19 @@
+<view class="publish-page{{active ? ' active' : ''}}">
+  <live-pusher
+    id="pusher" url="{{pushURL}}" mode="{{pushMode}}"
+    bindstatechange="statechange"
+    beauty="{{magic ? '6' : 1}}"
+    whiteness="{{magic ? '6' : 1}}"
+  >
+    <cover-view class="wrapper" bindtap="onViewTap">
+      <cover-view class="publish-control">
+        <cover-image catchtap="onSwitchCamera" src="../../assets/icons/switch-camera.png" class="switchbtn"/>
+
+        <cover-view catchtap="onModeTap" class="control__mode">{{pushModeText}}</cover-view>
+
+        <cover-image catchtap="onMagicTap" src="../../assets/icons/magic-wand.png" class="magicbtn {{magic ? 'active' : ''}}"/>
+        <cover-image catchtap="onCloseTap" src="../../assets/icons/exit2.png" class="exitbtn"/>
+      </cover-view>
+    </cover-view>
+  </live-pusher>
+</view>
