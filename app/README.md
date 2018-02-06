@@ -1,5 +1,6 @@
 # 小程序端配置流程
-详细的代码说明参见本目录下的`DOC.md`文件   
+
+## 详细的代码说明参见本目录下的[DOC.md](./DOC.md)文件   
 
 ## 在微信公众平台注册小程序获取APPID
 ![](http://7xn38i.com1.z0.glb.clouddn.com/wapp/wapp/1517801817016.jpg)

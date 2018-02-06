@@ -1,5 +1,7 @@
 # Demo 后台
 
+API LIST 参见 [API.md](./API.md)
+
 ## 介绍
 服务Demo小程序的后端程序，主要分为2个部分
 

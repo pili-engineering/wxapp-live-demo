@@ -12,6 +12,7 @@ const { getStreamKey } = require('../utils/pili');
 
 /**
  * 获取rtmp的推流或播放地址
+ * TODO: 需要用户身份认证
  */
 router.get('/rtmp/:type/:userId', (req, res) => {
   const type = req.params.type;
