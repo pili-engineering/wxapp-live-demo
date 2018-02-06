@@ -90,6 +90,7 @@ router.post('/user', async (req, res) => {
 /**
  * 获取当前正在推流的用户
  * 如果传入groupID，就只会搜索群组内部的用户
+ * TODO: 该请求调用频繁，应该加入cache
  * (目前Demo没有做groupId的限制
  */
 router.get('/activeuser/:groupId?', async (req, res) => {

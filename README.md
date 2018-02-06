@@ -1,4 +1,4 @@
-# 七牛微信小程序直播Demo
+# 七牛云小程序直播 Demo
 
 ## 效果截图
 ![](http://7xn38i.com1.z0.glb.clouddn.com/wapp/demo.jpg)
