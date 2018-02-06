@@ -1,5 +1,5 @@
-// 需要https，详见微信相关文档
-const host = 'https://wxapp.qnsdk.com';
+// 正式部署上线需要https，详见微信相关文档
+const host = '<Your server host>';
 
 App({
   onLaunch: function (options) {
