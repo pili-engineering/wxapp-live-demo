@@ -40,6 +40,15 @@ Page({
     } else {
       app.loginFinish = this.onLoginFinish;
     }
+    wx.setKeepScreenOn({
+      keepScreenOn: true
+    });
+  },
+
+  onHide() {
+    wx.setKeepScreenOn({
+      keepScreenOn: false,
+    });
   },
 
   statechange(e) {

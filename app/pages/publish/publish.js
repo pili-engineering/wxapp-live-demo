@@ -29,6 +29,18 @@ Page({
     this.getPushURL();
   },
 
+  onShow() {
+    wx.setKeepScreenOn({
+      keepScreenOn: true,
+    });
+  },
+
+  onHide() {
+    wx.setKeepScreenOn({
+      keepScreenOn: false,
+    });
+  },
+
   onShareAppMessage() {
     const user = app.globalData.userInfo;
     console.log(user);
