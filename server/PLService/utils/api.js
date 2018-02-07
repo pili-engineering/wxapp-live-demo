@@ -15,7 +15,7 @@ exports.getLiveStream = async function(streamKeys, config) {
   // vdn 查询接口一次最多100条
   // 这里需要优化，在大量用户的场景下应该由开发者自己维护推流状态表
   for (let i = 0; i < streamKeys.length; i += 100) {
-    const keys = streamKey.slice(i, i + 100);
+    const keys = streamKeys.slice(i, i + 100);
     const data = await request(path, 'POST', {
       items: keys,
     }, config);
