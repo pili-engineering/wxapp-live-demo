@@ -106,8 +106,11 @@ Page({
 
   getPushURL: function() {
     wx.request({
-      url: `${host}/pili/rtmp/publish/${app.globalData.userInfo.id}`,
+      url: `${host}/pili/api/rtmp/publish`,
       dataType: 'json',
+      header: {
+        Authorization: wx.getStorageSync('authToken'),
+      },
       success: (data) => {
         // 注意这里必须在setData的回调后才能开始推流
         this.setData({ pushURL: data.data.url }, () => {
