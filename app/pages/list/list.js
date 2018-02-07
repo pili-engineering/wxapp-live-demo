@@ -106,7 +106,7 @@ Page({
   // 获取正在推流的用户，并同步到该页面的data中
   fetchActiveUser(cb) {
     app.fetchActiveUser().then((activeUser) => {
-      const activeUserKey = activeUser.reduce((a, b) => a.userId + b.userId, '');
+      const activeUserKey = activeUser.map(u => u.userId).reduce((a, b) => a + b, '');
       if (activeUserKey !== this.activeUserKey) {
         this.setData({ activeUser }, cb);
       } else {
