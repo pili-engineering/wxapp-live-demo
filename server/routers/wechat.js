@@ -111,15 +111,37 @@ router.post('/api/user', async (req, res) => {
 /**
  * 获取当前正在推流的用户
  * 如果传入groupID，就只会搜索群组内部的用户
- * TODO: 该请求调用频繁，应该加入cache
  * (目前Demo没有做groupId的限制
  */
+let fetchLock = false;
+let cacheUser = [];
+let cacheStream = [];
+let lastCache = 0;
 router.get('/api/activeuser/:groupId?', async (req, res) => {
   try {
     const groupId = req.params.groupId;
-    const users = groupId ? await getUsersFromGroup(groupId) : await User.find();
-    const streams = users.map(user => getStreamKey(user.userId, groupId));
-    const activeStream = await PILI.getActiveStream(streams);
+    let users;
+    let activeStream;
+    // 一个简单的缓存和缓存锁，永远每隔3s更新一次数据，防止重复请求
+    if (!fetchLock && Date.now() - lastCache > 3000) {
+      fetchLock = true;
+      try {
+        users = groupId ? await getUsersFromGroup(groupId) : await User.find();
+        const streams = users.map(user => getStreamKey(user.userId, groupId));
+        activeStream = await PILI.getActiveStream(streams);
+        cacheUser = users;
+        cacheStream = activeStream;
+        lastCache = Date.now();
+        fetchLock = false;
+      } catch (e) {
+        fetchLock = false;
+        res.status(500).json({ error: e.toString() });
+        return;
+      }
+    } else {
+      users = cacheUser;
+      activeStream = cacheStream;
+    }
     let activeStreamMap = {};
     activeStream.map(stream => activeStreamMap[stream.key] = stream);
 
