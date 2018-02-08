@@ -6,9 +6,8 @@ App({
     this.globalData.host = host;
     this.globalData.query = options.query;
 
-    this.login().then((id) => {
+    this.login().then(() => {
       this.globalData.userInfo = {};
-      this.globalData.userInfo.id = id;
       wx.getUserInfo({
         withCredentials: true,
         success: res => {
@@ -17,10 +16,13 @@ App({
             ...res.userInfo,
           };
           wx.request({
-            url: `${host}/wechat/user`,
+            url: `${host}/wechat/api/user`,
             method: 'POST',
             dataType: 'json',
-            data: { userInfo: res.userInfo, id },
+            data: { userInfo: res.userInfo },
+            header: {
+              Authorization: wx.getStorageSync('authToken'),
+            },
           });
         }
       });
@@ -60,21 +62,27 @@ App({
   setGroupData(iv, encryptedData, cb) {
     console.log(iv, encryptedData);
     wx.request({
-      url: `${host}/wechat/decrypt`,
+      url: `${host}/wechat/api/decrypt`,
       method: 'POST',
       data: {
         iv, encryptedData,
         userId: this.globalData.userInfo.id,
       },
+      header: {
+        Authorization: wx.getStorageSync('authToken'),
+      },
       dataType: 'json',
       success: (res) => {
         this.globalData.groupId = res.data.openGId;
         wx.request({
-          url: `${host}/wechat/group/add_member`,
+          url: `${host}/wechat/api/group/add_member`,
           method: 'POST',
           data: {
             userId: this.globalData.userInfo.id,
             groupId: res.data.openGId,
+          },
+          header: {
+            Authorization: wx.getStorageSync('authToken'),
           },
           success: cb,
         });
@@ -84,20 +92,36 @@ App({
 
   login() {
     return new Promise((resolve, reject) => {
-      wx.login({
-        success: res => {
-          this.globalData.wechatCode = res.code;
-          wx.request({
-            url: `${host}/wechat/login/${res.code}`,
-            dataType: 'json',
-            success: (res) => {
-              resolve(res.data.userId);
-            },
-            fail: reject,
-          });
-        },
-        fail: reject,
+      wx.checkSession({
+        success: () => doLogin(false),
+        fail: () => doLogin(true),
       });
+      const doLogin = (needUpdate) => {
+        let token = '';
+        try {
+          token = wx.getStorageSync('authToken');
+        } catch(e) {
+          console.log('no token');
+        }
+        wx.login({
+          success: res => {
+            this.globalData.wechatCode = res.code;
+            wx.request({
+              url: `${host}/wechat/login/${res.code}`,
+              dataType: 'json',
+              success: (res) => {
+                wx.setStorageSync('authToken', res.data.token);
+                resolve();
+              },
+              header: {
+                Authorization: needUpdate ? '' : token,
+              },
+              fail: reject,
+            });
+          },
+          fail: reject,
+        });
+      }
     });
   },
 
@@ -107,7 +131,10 @@ App({
   fetchActiveUser() {
     return new Promise((resolve, reject) => {
       wx.request({
-        url: `${host}/wechat/activeuser`,
+        url: `${host}/wechat/api/activeuser`,
+        header: {
+          Authorization: wx.getStorageSync('authToken'),
+        },
         success: (res) => {
           const activeUser = res.data.activeUser.map(u => {
             u.coverUrl = `http://pili-pic.qnsdk.com/sdk-live/${u.stream.key}.jpg`;

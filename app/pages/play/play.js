@@ -40,6 +40,15 @@ Page({
     } else {
       app.loginFinish = this.onLoginFinish;
     }
+    wx.setKeepScreenOn({
+      keepScreenOn: true
+    });
+  },
+
+  onHide() {
+    wx.setKeepScreenOn({
+      keepScreenOn: false,
+    });
   },
 
   statechange(e) {
@@ -77,8 +86,11 @@ Page({
   getPlayURL: function(user) {
     const self = this;
     wx.request({
-      url: `${host}/pili/rtmp/play/${user}`,
+      url: `${host}/pili/api/rtmp/play/${this.userId}`,
       dataType: 'json',
+      header: {
+        Authorization: wx.getStorageSync('authToken'),
+      },
       success: function(data) {
         self.setData({ playURL: data.data.url }, () => {
           self.playContext.play({

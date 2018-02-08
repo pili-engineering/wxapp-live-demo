@@ -18,7 +18,7 @@ Response 200
 ### 更新用户信息
 小程序端获取到用户详细信息后，通过这个接口将信息存在内部的数据表中
 ```
-POST /wechat/user
+POST /wechat/api/user
 Body
 {
   userInfo: <微信获取的UserInfo>
@@ -33,7 +33,7 @@ Response 200
 
 ### 解密微信的加密数据
 ```
-POST /wechat/decrypt
+POST /wechat/api/decrypt
 Body
 {
   userId: <用户的OpenId>
@@ -47,7 +47,7 @@ Response 200
 
 ### 将用户加入内部的群组表
 ```
-POST /wechat/group/add_member
+POST /wechat/api/group/add_member
 Body
 {
   userId: <用户的OpenId>
@@ -62,7 +62,7 @@ Response 200
 
 ### 获取正在推流的用户
 ```
-GET /wechat/activeuser/<groupId>
+GET /wechat/api/activeuser/<groupId>
 
 Response 200
 {
@@ -79,7 +79,7 @@ Response 200
 
 ### 获取RTMP的推流或者播放地址
 ```
-GET /pili/rtmp/<type>/<userId>
+GET /pili/api/rtmp/<type>/<userId>
 
 Response 200
 { url: <地址> }

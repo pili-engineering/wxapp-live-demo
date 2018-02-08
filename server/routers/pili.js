@@ -7,16 +7,17 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../auth');
 const PILI = require('../pili.js');
 const { getStreamKey } = require('../utils/pili');
 
+router.use('/api', auth);
 /**
  * 获取rtmp的推流或播放地址
- * TODO: 需要用户身份认证
  */
-router.get('/rtmp/:type/:userId', (req, res) => {
+router.get('/api/rtmp/:type/:user?', (req, res) => {
   const type = req.params.type;
-  const userId = req.params.userId;
+  const userId = req.params.user || req.user.userId;
   const streamKey = getStreamKey(userId);
   let rtmpURL;
 
@@ -37,6 +38,7 @@ router.get('/rtmp/:type/:userId', (req, res) => {
 
 /**
  * 直播鉴黄的回调请求
+ * TODO: 应该有token检查
  */
 router.post('/r18', async (req, res) => {
   const body = req.body;
