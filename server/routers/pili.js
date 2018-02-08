@@ -15,9 +15,9 @@ router.use('/api', auth);
 /**
  * 获取rtmp的推流或播放地址
  */
-router.get('/api/rtmp/:type', (req, res) => {
+router.get('/api/rtmp/:type/:user?', (req, res) => {
   const type = req.params.type;
-  const userId = req.user.userId;
+  const userId = req.params.user || req.user.userId;
   const streamKey = getStreamKey(userId);
   let rtmpURL;
 

@@ -86,7 +86,7 @@ Page({
   getPlayURL: function(user) {
     const self = this;
     wx.request({
-      url: `${host}/pili/api/rtmp/play`,
+      url: `${host}/pili/api/rtmp/play/${this.userId}`,
       dataType: 'json',
       header: {
         Authorization: wx.getStorageSync('authToken'),
