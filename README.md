@@ -1,7 +1,7 @@
 # 七牛云小程序直播 Demo
 
 ## 效果截图
-![](http://7xn38i.com1.z0.glb.clouddn.com/wapp/demo.jpg)
+![](http://7xn38i.com1.z0.glb.clouddn.com/wapp/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B4%E6%92%ADdemo-%E5%8A%A8%E5%9B%BE2%202.gif)
 
 ## 使用说明
 小程序代码在 ./app 下，服务端代码在 ./server 下
