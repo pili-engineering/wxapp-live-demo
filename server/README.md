@@ -19,6 +19,10 @@ API LIST 参见 [API.md](./API.md)
 修改 pili.js,
 将AK，SK换成自己的七牛账户，修改域名host，把直播空间填成自己的直播空间
 
+### 配置微信 APPID
+修改 utils/wechat.js
+将 WECHAT_APPID 和 WEHCAT_APPSECRTE 换成自己相应的小程序设置（在小程序开发设置里可以找到
+
 ### 运行
 推荐使用docker来运行，在当前目录下执行`docker-compose up`就可以运行该该服务。   
 暴露的端口为8686，之后请自行配置nginx转发和https。   
